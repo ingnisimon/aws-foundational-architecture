@@ -7,3 +7,7 @@ output "web_server_public_dns" {
   description = "The public DNS of the web server"
   value       = aws_instance.web_server.public_dns
 }
+output "database_endpoint" {
+  description = "The connection endpoint for the RDS database"
+  value       = aws_db_instance.mysql.endpoint
+}
