@@ -10,8 +10,8 @@ data "aws_ami" "amazon_linux_2023" {
 }
 # 2. Key Pair for SSH Access
 resource "aws_key_pair" "deployer" {
-  key_name   = "${var.project_name}-key"
-  public_key = file("~/.ssh/id_ed25519.pub")
+  key_name   = "foundational-architecture-key"
+  public_key = var.ec2_public_key
 }
 
 /*# 3. Public Web Server
