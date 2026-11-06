@@ -1,11 +1,15 @@
+provider "aws" {
+  region = "us-east-1"
+}
+
 # 1. S3 Bucket for State Storage
 resource "aws_s3_bucket" "terraform_state" {
-  bucket        = "${var.project_name}-tf-state-ingnisimon-aws"
-  force_destroy = true # Allows clean teardown for this learning project
+  bucket        = "foundational-architecture-tf-state-ingnisimon-aws"
+  force_destroy = true
 
   tags = {
     Name        = "Terraform State Storage"
-    Environment = var.environment
+    Environment = "dev"
   }
 }
 
@@ -19,8 +23,8 @@ resource "aws_s3_bucket_versioning" "terraform_state" {
 
 # 3. DynamoDB Table for State Locking
 resource "aws_dynamodb_table" "terraform_locks" {
-  name         = "${var.project_name}-tf-locks"
-  billing_mode = "PAY_PER_REQUEST" # Free-tier friendly
+  name         = "foundational-architecture-tf-locks"
+  billing_mode = "PAY_PER_REQUEST"
   hash_key     = "LockID"
 
   attribute {
@@ -30,6 +34,6 @@ resource "aws_dynamodb_table" "terraform_locks" {
 
   tags = {
     Name        = "Terraform State Lock Table"
-    Environment = var.environment
+    Environment = "dev"
   }
 }
