@@ -13,7 +13,8 @@ resource "aws_key_pair" "deployer" {
   key_name   = "${var.project_name}-key"
   public_key = file("~/.ssh/id_ed25519.pub")
 }
-# 3. Public Web Server
+
+/*# 3. Public Web Server
 resource "aws_instance" "web_server" {
   ami                    = data.aws_ami.amazon_linux_2023.id
   instance_type          = "t3.micro" # Free-tier eligible
@@ -35,4 +36,4 @@ resource "aws_instance" "web_server" {
     Name        = "${var.project_name}-web-server"
     Environment = var.environment
   }
-}
+}*/
