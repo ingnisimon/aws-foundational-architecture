@@ -19,7 +19,6 @@ resource "aws_iam_role" "github_actions" {
         Action = "sts:AssumeRoleWithWebIdentity"
         Effect = "Allow"
         Principal = {
-          # Hardcoded to the existing provider you imported
           Federated = "arn:aws:iam::384518871764:oidc-provider/token.actions.githubusercontent.com"
         }
         Condition = {
@@ -27,8 +26,7 @@ resource "aws_iam_role" "github_actions" {
             "token.actions.githubusercontent.com:aud" = "sts.amazonaws.com"
           }
           StringLike = {
-            # Matches your exact repository
-            "token.actions.githubusercontent.com:sub" = "repo:ingnisimon/aws-foundational-architecture:*"
+            "token.actions.githubusercontent.com:sub" = "repo:ingnisimon@65754627/aws-foundational-architecture@1447261333:*"
           }
         }
       }
