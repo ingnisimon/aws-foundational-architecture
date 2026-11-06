@@ -7,6 +7,6 @@ terraform {
 
     # Must match the DynamoDB table name exactly
     use_lockfile = true
-    encrypt        = true
+    encrypt      = true
   }
 }
