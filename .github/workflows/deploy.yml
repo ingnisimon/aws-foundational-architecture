@@ -1,6 +1,7 @@
 name: Terraform CI/CD Deploy
 
 on:
+  workflow_dispatch: # Enables manual execution from the GitHub Actions tab
   push:
     branches: [ "main" ]
 
