@@ -1,7 +1,7 @@
 resource "aws_eks_cluster" "main" {
-  name     = "foundational-architecture-cluster"
+  name     = "${var.project_name}-cluster"
   role_arn = aws_iam_role.eks_cluster.arn
-  version  = "1.30"
+  version  = "1.31"
 
   vpc_config {
     subnet_ids              = aws_subnet.private[*].id
@@ -14,7 +14,7 @@ resource "aws_eks_cluster" "main" {
   ]
 
   tags = {
-    Environment = "dev"
-    Name        = "foundational-architecture-eks-cluster"
+    Environment = var.environment
+    Name        = "${var.project_name}-eks-cluster"
   }
 }

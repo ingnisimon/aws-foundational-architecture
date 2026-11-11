@@ -8,7 +8,7 @@ variable "aws_region" {
 variable "project_name" {
   description = "Name of the project used for tagging AWS resources"
   type        = string
-  default     = "enterprise-tier"
+  default     = "foundational-architecture"
 }
 
 variable "environment" {
