@@ -4,8 +4,9 @@ resource "aws_eks_node_group" "main" {
   node_role_arn   = aws_iam_role.eks_nodes.arn
   subnet_ids      = aws_subnet.private[*].id
 
+  ami_type = "AL2023_x86_64_STANDARD"
   capacity_type  = "ON_DEMAND"
-  instance_types = ["t3.medium"] # Recommended minimum memory for K8s system pods
+  instance_types = ["t3.micro"] # Free Tier eligible instance type
 
   scaling_config {
     desired_size = 2
