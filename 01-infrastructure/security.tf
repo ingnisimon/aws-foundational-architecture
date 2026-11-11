@@ -40,7 +40,11 @@ resource "aws_security_group" "private_db_sg" {
   name        = "${var.project_name}-private-db-sg"
   description = "Allow MySQL inbound traffic from the web tier"
   vpc_id      = aws_vpc.main.id
-
+  
+  lifecycle {
+    create_before_destroy = true
+  }
+  
   ingress {
     description     = "MySQL access from Web Server SG"
     from_port       = 3306
