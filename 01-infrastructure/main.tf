@@ -10,3 +10,19 @@ terraform {
     encrypt      = true
   }
 }
+
+# ECR Repository for Phase 5 application container images
+resource "aws_ecr_repository" "app" {
+  name                 = "foundational-architecture-app-repo"
+  image_tag_mutability = "MUTABLE"
+  force_delete         = true   # Automatically purges all pushed images during terraform destroy
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+
+  tags = {
+    Environment = "dev"
+    Name        = "foundational-architecture-ecr"
+  }
+}
